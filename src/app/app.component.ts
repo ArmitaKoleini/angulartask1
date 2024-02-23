@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { IUser } from './user-interface';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
