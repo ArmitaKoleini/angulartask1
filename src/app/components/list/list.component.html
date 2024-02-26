@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <div class="first-list">
+      <p class="paragraph">First List 💚</p>
+      <select [(ngModel)]="selectedUsers" multiple="multiple">
+        <option *ngFor="let user of users; let i = index">
+          {{ user }}
+        </option>
+      </select>
+    </div>
+    <div class="btns">
+      <button class="btn" (click)="moveRight()" type="button">
+        Move To Right
+      </button>
+      <button class="btn" (click)="moveLeft()" type="button">
+        Move To Left
+      </button>
+      <button class="btn" (click)="removeFromList()">remove❌</button>
+    </div>
+    <div class="second-list">
+      <p class="paragraph">Second List 💚</p>
+      <select [(ngModel)]="selectedUsers" multiple="multiple">
+        <option *ngFor="let user of movedUsers; let i = index">
+          {{ user }}
+        </option>
+      </select>
+    </div>
+  </div>
+</div>

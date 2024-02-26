@@ -1,0 +1,32 @@
+.container {
+  border: 2px solid black;
+  width: 700px;
+  margin: auto;
+}
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.btns {
+  margin: 10rem 5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.btn {
+  background-color: #065f46;
+  padding: 1rem;
+  color: #fff;
+  border-radius: 1rem;
+}
+select {
+  border: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 200px;
+  height: 200px;
+}
+select option {
+  padding: 5px;
+}
