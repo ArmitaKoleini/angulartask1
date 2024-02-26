@@ -10,7 +10,7 @@
   justify-content: center;
 }
 .btns {
-  margin: 5rem;
+  margin: 3rem 5rem;
   display: flex;
   flex-direction: column;
   gap: 0.7rem;

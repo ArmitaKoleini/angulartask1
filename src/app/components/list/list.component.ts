@@ -17,6 +17,16 @@ export class ListComponent {
 
   constructor() {}
 
+  public moveAllRight() {
+    this.movedUsers = this.movedUsers.concat(this.users);
+    this.users = [];
+  }
+
+  public moveAllLeft() {
+    this.users = this.users.concat(this.movedUsers);
+    this.movedUsers = [];
+  }
+
   // public moveRight() {
   //   if (this.selectedUsers) {
   //     this.users = this.users.filter((user) => user !== this.selectedUsers);
