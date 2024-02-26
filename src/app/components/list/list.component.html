@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="first-list">
-      <p class="paragraph">First List 💚</p>
+      <p class="paragraph">First List</p>
       <select [(ngModel)]="selectedUsers" multiple="multiple">
         <option *ngFor="let user of users; let i = index">
           {{ user }}
@@ -10,15 +10,17 @@
     </div>
     <div class="btns">
       <button class="btn" (click)="moveRight()" type="button">
-        Move To Right
+        <i class="fa-solid fa-chevron-right"></i>
       </button>
       <button class="btn" (click)="moveLeft()" type="button">
-        Move To Left
+        <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <button class="btn" (click)="removeFromList()">remove❌</button>
+      <button class="btn" (click)="removeFromList()">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
     </div>
     <div class="second-list">
-      <p class="paragraph">Second List 💚</p>
+      <p class="paragraph">Second List</p>
       <select [(ngModel)]="selectedUsers" multiple="multiple">
         <option *ngFor="let user of movedUsers; let i = index">
           {{ user }}
