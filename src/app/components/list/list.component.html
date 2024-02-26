@@ -7,6 +7,7 @@
           {{ user }}
         </option>
       </select>
+      <input type="text" *ngIf="isEditMode" [(ngModel)]="editedUser">
     </div>
     <div class="btns">
       <button class="btn" (click)="moveAllRight()" type="button">
@@ -23,6 +24,11 @@
       </button>
       <button class="btn" (click)="removeFromList()">
         <i class="fa-solid fa-xmark"></i>
+      </button>
+      <button class="btn" (click)="toggleEditMode()" type="button">
+        <i class="fa-solid fa-pen"></i>
+        <span *ngIf="!isEditMode">Edit</span>
+        <span (click)="onSaveChanges(editedUser)" *ngIf="isEditMode">Save</span>
       </button>
     </div>
     <div class="second-list">
