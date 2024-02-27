@@ -12,5 +12,6 @@ import { FormsModule } from '@angular/forms';
 export class ListComponent {
   @Input() users: string[] = [];
   @Input() public movedUsers: string[] = [];
-  @Input() public selectedUsers: string[] = [];
+  public selectedUsers: string[] = [];
+  
 }

@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Renderer2, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 
@@ -10,28 +10,30 @@ import { ListComponent } from './list/list.component';
   templateUrl: './lists.component.html',
   styleUrl: './lists.component.css',
 })
-export class ListsComponent {
+export class ListsComponent implements AfterViewInit {
   public users: string[] = ['a', 'b', 'c', 'd', 'e', 'f'];
   public movedUsers: string[] = [];
   public selectedUsers: string[] = [];
   public editedUser: string = '';
 
-  // @ViewChild('firstChild', { static: true }) firstList: ListComponent;
-  // @ViewChild('secondChild', { static: true }) secondList: ListComponent;
-
-  // @ViewChild('first', {read: ListComponent}) firstList: ListComponent;
-  // @ViewChild('second', {read: ListComponent}) secondList: ListComponent;
+  @ViewChild('firstChild', { static: true }) firstList!: ListComponent;
+  @ViewChild('secondChild', { static: true }) secondList!: ListComponent;
 
   constructor(private renderer: Renderer2) {}
 
-  closeModal() {
+  ngAfterViewInit(): void {
+    // this.users = this.firstList.users;
+    // this.movedUsers = this.secondList.movedUsers;
+  }
+
+  public closeModal() {
     const modalElement = document.querySelector('.modal');
     this.renderer.setStyle(modalElement, 'display', 'none');
     const backDropElement = document.querySelector('.backdrop');
     this.renderer.setStyle(backDropElement, 'display', 'none');
   }
 
-  openModal() {
+  public openModal() {
     const modalElement = document.querySelector('.modal');
     this.renderer.setStyle(modalElement, 'display', 'block');
     const backDropElement = document.querySelector('.backdrop');
@@ -59,6 +61,8 @@ export class ListsComponent {
   }
 
   public moveRight() {
+    console.log(this.selectedUsers);
+
     if (this.selectedUsers.length > 0) {
       const uniqueSelectedUsers = new Set(this.selectedUsers);
       this.movedUsers = this.movedUsers.filter(
