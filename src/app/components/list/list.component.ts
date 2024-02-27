@@ -36,30 +36,26 @@ export class ListComponent {
     this.movedUsers = [];
   }
 
-  // public moveRight() {
-  //   if (this.selectedUsers) {
-  //     this.users = this.users.filter((user) => user !== this.selectedUsers);
-  //     this.movedUsers.push(this.selectedUsers);
-  //     this.selectedUsers = null;
-  //   }
-  // }
-
   public moveRight() {
     if (this.selectedUsers.length > 0) {
-      this.users = this.users.filter(
-        (user) => !this.selectedUsers.includes(user)
+      const uniqueSelectedUsers = new Set(this.selectedUsers);
+      this.movedUsers = this.movedUsers.filter(
+        (user) => !uniqueSelectedUsers.has(user)
       );
-      this.movedUsers = this.movedUsers.concat(this.selectedUsers);
+      this.movedUsers = this.movedUsers.concat([...uniqueSelectedUsers]);
+      this.users = this.users.filter((user) => !uniqueSelectedUsers.has(user));
       this.selectedUsers = [];
     }
   }
 
   public moveLeft() {
     if (this.selectedUsers.length > 0) {
+      const uniqueSelectedUsers = new Set(this.selectedUsers);
+      this.users = this.users.filter((user) => !uniqueSelectedUsers.has(user));
+      this.users = this.users.concat([...uniqueSelectedUsers]);
       this.movedUsers = this.movedUsers.filter(
-        (user) => !this.selectedUsers.includes(user)
+        (user) => !uniqueSelectedUsers.has(user)
       );
-      this.users = this.users.concat(this.selectedUsers);
       this.selectedUsers = [];
     }
   }
