@@ -11,9 +11,9 @@ import { ListComponent } from './list/list.component';
   styleUrl: './lists.component.css'
 })
 export class ListsComponent {
-  public users: string[] = ['a', 'b', 'c', 'd', 'e', 'f'];
-  public movedUsers: string[] = [];
-  public selectedUsers: string[] = [];
+ public users: string[] = ['a', 'b', 'c', 'd', 'e', 'f'];
+ public movedUsers: string[] = [];
+ public selectedUsers: string[] = [];
   public isEditMode: boolean = false;
   public editedUser: string = '';
 
@@ -22,7 +22,6 @@ export class ListsComponent {
     this.users = this.users
       .filter((user) => !this.selectedUsers.includes(user))
       .concat([editedUser]);
-      
 
     console.log(this.editedUser);
     console.log(this.selectedUsers);

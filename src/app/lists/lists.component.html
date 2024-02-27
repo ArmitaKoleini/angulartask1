@@ -2,12 +2,7 @@
     <div class="row">
       <div class="first-list">
         <p class="paragraph">First List</p>
-        <!-- <select [(ngModel)]="selectedUsers" multiple="multiple">
-          <option *ngFor="let user of users; let i = index">
-            {{ user }}
-          </option>
-        </select> -->
-        <app-list></app-list>
+        <app-list [users]=users></app-list>
         <input type="text" *ngIf="isEditMode" [(ngModel)]="editedUser" />
       </div>
       <div class="btns">
@@ -47,12 +42,7 @@
       </div>
       <div class="second-list">
         <p class="paragraph">Second List</p>
-        <!-- <select [(ngModel)]="selectedUsers" multiple="multiple">
-          <option *ngFor="let user of movedUsers; let i = index">
-            {{ user }}
-          </option>
-        </select> -->
-        <!-- <app-list></app-list> -->
+        <app-list [users]=movedUsers></app-list>
       </div>
     </div>
   </div>

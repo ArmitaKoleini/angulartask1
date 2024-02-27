@@ -10,5 +10,8 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './list.component.css',
 })
 export class ListComponent {
-  // @Input() public users: string[];
+  @Input() users: string[] = [];
+  @Input() public movedUsers: string[] = [];
+  @Input() public selectedUsers: string[] = [];
+
 }
