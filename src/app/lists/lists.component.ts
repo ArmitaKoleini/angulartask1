@@ -1,15 +1,16 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { ListComponent } from './list/list.component';
 
 @Component({
-  selector: 'app-list',
+  selector: 'app-lists',
   standalone: true,
-  imports: [NgFor, FormsModule, NgIf],
-  templateUrl: './list.component.html',
-  styleUrl: './list.component.css',
+  imports: [NgFor,NgIf,FormsModule,ListComponent],
+  templateUrl: './lists.component.html',
+  styleUrl: './lists.component.css'
 })
-export class ListComponent {
+export class ListsComponent {
   public users: string[] = ['a', 'b', 'c', 'd', 'e', 'f'];
   public movedUsers: string[] = [];
   public selectedUsers: string[] = [];
@@ -21,6 +22,7 @@ export class ListComponent {
     this.users = this.users
       .filter((user) => !this.selectedUsers.includes(user))
       .concat([editedUser]);
+      
 
     console.log(this.editedUser);
     console.log(this.selectedUsers);
@@ -76,3 +78,4 @@ export class ListComponent {
     this.isEditMode = !this.isEditMode;
   }
 }
+

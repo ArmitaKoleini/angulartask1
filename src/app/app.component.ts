@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ListComponent } from './components/list/list.component';
+import { ListsComponent } from './lists/lists.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, ListComponent],
+  imports: [RouterOutlet, ListsComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
 })

@@ -1,0 +1,10 @@
+select {
+  border: none;
+  padding: 10px;
+  border: 1px solid #ccc;
+  width: 200px;
+  height: 200px;
+}
+select option {
+  padding: 5px;
+}
