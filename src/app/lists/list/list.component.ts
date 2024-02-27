@@ -13,5 +13,4 @@ export class ListComponent {
   @Input() users: string[] = [];
   @Input() public movedUsers: string[] = [];
   @Input() public selectedUsers: string[] = [];
-
 }
