@@ -13,8 +13,13 @@
           <div class="modal-items">
             <input type="text" [(ngModel)]="editedUser" />
             <div class="modal-buttons">
-              <button class="accept-btn" (click)="closeModal()" type="button">
-                <span (click)="onSaveChanges(editedUser)">Save</span>
+              <button
+                class="accept-btn"
+                (click)="onSaveChanges(editedUser)"
+                (click)="closeModal()"
+                type="button"
+              >
+                <span>Save</span>
               </button>
               <button class="close-btn" (click)="closeModal()" type="button">
                 <span>Cancel</span>
