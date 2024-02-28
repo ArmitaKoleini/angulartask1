@@ -40,16 +40,23 @@ export class ListsComponent {
   }
 
   public onSaveChanges(editedUser: string) {
-    console.log(this.selectedUsers);
-    this.movedUsers = this.movedUsers.filter(
-      (user) => !this.selectedUsers.includes(user)
+    const isUsers = this.selectedUsers.some((user) =>
+      this.users.includes(user)
     );
-    this.users = this.users
-      .filter((user) => !this.selectedUsers.includes(user))
-      .concat([editedUser]);
-
-    console.log(this.editedUser);
-    console.log(this.selectedUsers);
+    const ismovedUsers = this.selectedUsers.some((user) =>
+      this.movedUsers.includes(user)
+    );
+    if (isUsers) {
+      this.users = this.users
+        .filter((user) => !this.selectedUsers.includes(user))
+        .concat([editedUser]);
+    } else if (ismovedUsers) {
+      this.movedUsers = this.movedUsers
+        .filter((user) => !this.selectedUsers.includes(user))
+        .concat([editedUser]);
+    }
+    this.selectedUsers = [];
+    this.editedUser = '';
   }
 
   public moveAllRight() {
