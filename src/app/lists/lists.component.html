@@ -2,7 +2,11 @@
   <div class="row">
     <div class="first-list">
       <p class="paragraph">First List</p>
-      <app-list #firstChild [users]="users"></app-list>
+      <app-list
+        #firstChild
+        [users]="users"
+        (selectedUsersChange)="onSelectedUsersChange($event)"
+      ></app-list>
       <div>
         <div class="backdrop" (click)="closeModal()"></div>
         <div class="modal">
@@ -43,7 +47,11 @@
     </div>
     <div class="second-list">
       <p class="paragraph">Second List</p>
-      <app-list #secondChild [users]="movedUsers"></app-list>
+      <app-list
+        #secondChild
+        [users]="movedUsers"
+        (selectedUsersChange)="onSelectedUsersChange($event)"
+      ></app-list>
     </div>
   </div>
 </div>

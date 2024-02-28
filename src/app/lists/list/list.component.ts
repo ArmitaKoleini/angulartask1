@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 
 @Component({
@@ -11,7 +11,18 @@ import { FormsModule } from '@angular/forms';
 })
 export class ListComponent {
   @Input() users: string[] = [];
-  @Input() public movedUsers: string[] = [];
-  public selectedUsers: string[] = [];
+  @Input() movedUsers: string[] = [];
   
+  @Output() selectedUsersChange = new EventEmitter<string[]>();
+
+  private _selectedUsers: string[] = [];
+
+  get selectedUsers(): string[] {
+    return this._selectedUsers;
+  }
+
+  onUserSelectionChange(selectedUsers: string[]) {
+    this._selectedUsers = selectedUsers;
+    this.selectedUsersChange.emit(selectedUsers); 
+  }
 }

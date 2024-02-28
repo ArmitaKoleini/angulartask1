@@ -1,5 +1,5 @@
 import { NgFor, NgIf } from '@angular/common';
-import { AfterViewInit, Component, Renderer2, ViewChild } from '@angular/core';
+import { Component, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ListComponent } from './list/list.component';
 
@@ -10,7 +10,7 @@ import { ListComponent } from './list/list.component';
   templateUrl: './lists.component.html',
   styleUrl: './lists.component.css',
 })
-export class ListsComponent implements AfterViewInit {
+export class ListsComponent {
   public users: string[] = ['a', 'b', 'c', 'd', 'e', 'f'];
   public movedUsers: string[] = [];
   public selectedUsers: string[] = [];
@@ -21,9 +21,8 @@ export class ListsComponent implements AfterViewInit {
 
   constructor(private renderer: Renderer2) {}
 
-  ngAfterViewInit(): void {
-    // this.users = this.firstList.users;
-    // this.movedUsers = this.secondList.movedUsers;
+  onSelectedUsersChange(selectedUsers: string[]) {
+    this.selectedUsers = selectedUsers;
   }
 
   public closeModal() {
@@ -42,6 +41,9 @@ export class ListsComponent implements AfterViewInit {
 
   public onSaveChanges(editedUser: string) {
     console.log(this.selectedUsers);
+    this.movedUsers = this.movedUsers.filter(
+      (user) => !this.selectedUsers.includes(user)
+    );
     this.users = this.users
       .filter((user) => !this.selectedUsers.includes(user))
       .concat([editedUser]);
