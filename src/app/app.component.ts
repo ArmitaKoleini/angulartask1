@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { NgFor } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { ListsComponent } from './lists/lists.component';
+import { ListsComponent } from './components/lists/lists.component';
 
 @Component({
   selector: 'app-root',

@@ -1,7 +1,7 @@
 import { NgFor, NgIf } from '@angular/common';
 import { Component, Renderer2, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { ListComponent } from './list/list.component';
+import { ListComponent } from '../list/list.component';
 
 @Component({
   selector: 'app-lists',
