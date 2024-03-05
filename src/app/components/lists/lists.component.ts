@@ -59,38 +59,71 @@ export class ListsComponent {
     this.editedUser = '';
   }
 
-  public moveAllRight() {
-    this.movedUsers = this.movedUsers.concat(this.users);
-    this.users = [];
-  }
+  // public moveAllRight() {
+  //   this.movedUsers = this.movedUsers.concat(this.users);
+  //   this.users = [];
+  // }
 
-  public moveAllLeft() {
-    this.users = this.users.concat(this.movedUsers);
-    this.movedUsers = [];
-  }
+  // public moveAllLeft() {
+  //   this.users = this.users.concat(this.movedUsers);
+  //   this.movedUsers = [];
+  // }
 
-  public moveRight() {
-    console.log(this.selectedUsers);
-
-    if (this.selectedUsers.length > 0) {
-      const uniqueSelectedUsers = new Set(this.selectedUsers);
-      this.movedUsers = this.movedUsers.filter(
-        (user) => !uniqueSelectedUsers.has(user)
-      );
-      this.movedUsers = this.movedUsers.concat([...uniqueSelectedUsers]);
-      this.users = this.users.filter((user) => !uniqueSelectedUsers.has(user));
-      this.selectedUsers = [];
+  public moveAllItems(direction: 'right' | 'left'): void {
+    if (direction === 'right') {
+      this.movedUsers = this.movedUsers.concat(this.users);
+      this.users = [];
+    } else {
+      this.users = this.users.concat(this.movedUsers);
+      this.movedUsers = [];
     }
   }
 
-  public moveLeft() {
+  // public moveRight() {
+
+  //   if (this.selectedUsers.length > 0) {
+  //     const uniqueSelectedUsers = new Set(this.selectedUsers);
+  //     this.movedUsers = this.movedUsers.filter(
+  //       (user) => !uniqueSelectedUsers.has(user)
+  //     );
+  //     this.movedUsers = this.movedUsers.concat([...uniqueSelectedUsers]);
+  //     this.users = this.users.filter((user) => !uniqueSelectedUsers.has(user));
+  //     this.selectedUsers = [];
+  //   }
+  // }
+
+  // public moveLeft() {
+  //   if (this.selectedUsers.length > 0) {
+  //     const uniqueSelectedUsers = new Set(this.selectedUsers);
+  //     this.users = this.users.filter((user) => !uniqueSelectedUsers.has(user));
+  //     this.users = this.users.concat([...uniqueSelectedUsers]);
+  //     this.movedUsers = this.movedUsers.filter(
+  //       (user) => !uniqueSelectedUsers.has(user)
+  //     );
+  //     this.selectedUsers = [];
+  //   }
+  // }
+
+  public moveItems(direction: 'right' | 'left'): void {
     if (this.selectedUsers.length > 0) {
       const uniqueSelectedUsers = new Set(this.selectedUsers);
-      this.users = this.users.filter((user) => !uniqueSelectedUsers.has(user));
-      this.users = this.users.concat([...uniqueSelectedUsers]);
-      this.movedUsers = this.movedUsers.filter(
-        (user) => !uniqueSelectedUsers.has(user)
-      );
+      if (direction === 'right') {
+        this.movedUsers = this.movedUsers.filter(
+          (user) => !uniqueSelectedUsers.has(user)
+        );
+        this.movedUsers = this.movedUsers.concat([...uniqueSelectedUsers]);
+        this.users = this.users.filter(
+          (user) => !uniqueSelectedUsers.has(user)
+        );
+      } else {
+        this.users = this.users.filter(
+          (user) => !uniqueSelectedUsers.has(user)
+        );
+        this.users = this.users.concat([...uniqueSelectedUsers]);
+        this.movedUsers = this.movedUsers.filter(
+          (user) => !uniqueSelectedUsers.has(user)
+        );
+      }
       this.selectedUsers = [];
     }
   }
