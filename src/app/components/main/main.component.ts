@@ -59,51 +59,18 @@ export class MainComponent {
     this.editedUser = '';
   }
 
-  public moveAllItems(direction: 'right' | 'left'): void {
-    if (direction === 'right') {
-      this.movedUsers = this.movedUsers.concat(this.users);
-      this.users = [];
-    } else {
-      this.users = this.users.concat(this.movedUsers);
-      this.movedUsers = [];
-    }
+  addRight() {
+    this.secondList.addItem(this.firstList.getItems());
+    this.firstList.removeSelected();
   }
 
-  public moveItems(direction: 'right' | 'left'): void {
-    if (this.selectedUsers.length > 0) {
-      const uniqueSelectedUsers = new Set(this.selectedUsers);
-      if (direction === 'right') {
-        this.movedUsers = this.movedUsers.filter(
-          (user) => !uniqueSelectedUsers.has(user)
-        );
-        this.movedUsers = this.movedUsers.concat([...uniqueSelectedUsers]);
-        this.users = this.users.filter(
-          (user) => !uniqueSelectedUsers.has(user)
-        );
-      } else {
-        this.users = this.users.filter(
-          (user) => !uniqueSelectedUsers.has(user)
-        );
-        this.users = this.users.concat([...uniqueSelectedUsers]);
-        this.movedUsers = this.movedUsers.filter(
-          (user) => !uniqueSelectedUsers.has(user)
-        );
-      }
-      this.selectedUsers = [];
-    }
+  addLeft() {
+    this.firstList.addItem(this.secondList.getItems());
+    this.secondList.removeSelected();
   }
 
-  public removeFromList() {
-    if (this.selectedUsers) {
-      this.users = this.users.filter(
-        (user) => !this.selectedUsers.includes(user)
-      );
-    }
-    if (this.selectedUsers) {
-      this.movedUsers = this.movedUsers.filter(
-        (user) => !this.selectedUsers.includes(user)
-      );
-    }
-    this.selectedUsers = [];
+  removeFromList() {
+    this.firstList.removeSelected();
+    this.secondList.removeSelected();
   }
 }

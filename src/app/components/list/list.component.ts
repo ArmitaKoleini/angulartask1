@@ -12,7 +12,8 @@ import { FormsModule } from '@angular/forms';
 export class ListComponent {
   @Input() users: string[] = [];
   @Input() movedUsers: string[] = [];
-  
+  selected: string[] = [];
+
   @Output() selectedUsersChange = new EventEmitter<string[]>();
 
   private _selectedUsers: string[] = [];
@@ -21,8 +22,23 @@ export class ListComponent {
     return this._selectedUsers;
   }
 
-  onUserSelectionChange(selectedUsers: string[]) {
-    this._selectedUsers = selectedUsers;
-    this.selectedUsersChange.emit(selectedUsers); 
+  // onUserSelectionChange(selectedUsers: string[]) {
+  //   this._selectedUsers = selectedUsers;
+  //   this.selectedUsersChange.emit(selectedUsers);
+  // }
+  onUserSelectionChange(e: any) {
+    //debugger;
+    console.log(e);
+    this.selected = e;
+  }
+  getItems(): string[] {
+    return this.selected;
+  }
+  addItem(names: string[]) {
+    this.users = [...this.users, ...names];
+  }
+  removeSelected() {
+    this.users = this.users.filter((user) => !this.selected.includes(user));
+    this.selected = [];
   }
 }

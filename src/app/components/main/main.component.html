@@ -30,18 +30,14 @@
       </div>
     </div>
     <div class="btns">
-      <button class="btn" (click)="moveAllItems('right')" type="button">
-        <i class="fa-solid fa-angles-right"></i>
-      </button>
-      <button class="btn" (click)="moveItems('right')" type="button">
+      
+      <button class="btn" (click)="addRight()" type="button">
         <i class="fa-solid fa-chevron-right"></i>
       </button>
-      <button class="btn" (click)="moveItems('left')" type="button">
+      <button class="btn" (click)="addLeft()" type="button">
         <i class="fa-solid fa-chevron-left"></i>
       </button>
-      <button class="btn" (click)="moveAllItems('left')" type="button">
-        <i class="fa-solid fa-angles-left"></i>
-      </button>
+     
       <button class="btn" (click)="removeFromList()">
         <i class="fa-solid fa-xmark"></i>
       </button>
