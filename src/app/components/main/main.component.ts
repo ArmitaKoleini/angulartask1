@@ -10,7 +10,7 @@ import { ListComponent } from '../list/list.component';
   templateUrl: './main.component.html',
   styleUrl: './main.component.css',
 })
-export class ListsComponent {
+export class MainComponent {
   public users: string[] = ['a', 'b', 'c', 'd', 'e', 'f'];
   public movedUsers: string[] = [];
   public selectedUsers: string[] = [];
