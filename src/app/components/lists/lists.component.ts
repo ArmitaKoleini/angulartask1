@@ -139,5 +139,6 @@ export class ListsComponent {
         (user) => !this.selectedUsers.includes(user)
       );
     }
+    this.selectedUsers = [];
   }
 }
