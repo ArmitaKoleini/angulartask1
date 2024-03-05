@@ -12,18 +12,12 @@ import { ListComponent } from '../list/list.component';
 })
 export class MainComponent {
   public users: string[] = ['a', 'b', 'c', 'd', 'e', 'f'];
-  public movedUsers: string[] = [];
-  public selectedUsers: string[] = [];
   public editedUser: string = '';
 
   @ViewChild('firstChild', { static: true }) firstList!: ListComponent;
   @ViewChild('secondChild', { static: true }) secondList!: ListComponent;
 
   constructor(private renderer: Renderer2) {}
-
-  onSelectedUsersChange(selectedUsers: string[]) {
-    this.selectedUsers = selectedUsers;
-  }
 
   public closeModal() {
     const modalElement = document.querySelector('.modal');
@@ -38,25 +32,9 @@ export class MainComponent {
     const backDropElement = document.querySelector('.backdrop');
     this.renderer.setStyle(backDropElement, 'display', 'block');
   }
-
   public onSaveChanges(editedUser: string) {
-    const isUsers = this.selectedUsers.some((user) =>
-      this.users.includes(user)
-    );
-    const ismovedUsers = this.selectedUsers.some((user) =>
-      this.movedUsers.includes(user)
-    );
-    if (isUsers) {
-      this.users = this.users
-        .filter((user) => !this.selectedUsers.includes(user))
-        .concat([editedUser]);
-    } else if (ismovedUsers) {
-      this.movedUsers = this.movedUsers
-        .filter((user) => !this.selectedUsers.includes(user))
-        .concat([editedUser]);
-    }
-    this.selectedUsers = [];
-    this.editedUser = '';
+    this.firstList.editItem();
+    this.secondList.editItem();
   }
 
   addRight() {
