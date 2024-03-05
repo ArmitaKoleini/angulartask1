@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { ListComponent } from '../list/list.component';
 
 @Component({
-  selector: 'app-lists',
+  selector: 'app-main',
   standalone: true,
   imports: [NgFor, NgIf, FormsModule, ListComponent],
-  templateUrl: './lists.component.html',
-  styleUrl: './lists.component.css',
+  templateUrl: './main.component.html',
+  styleUrl: './main.component.css',
 })
 export class ListsComponent {
   public users: string[] = ['a', 'b', 'c', 'd', 'e', 'f'];
@@ -59,16 +59,6 @@ export class ListsComponent {
     this.editedUser = '';
   }
 
-  // public moveAllRight() {
-  //   this.movedUsers = this.movedUsers.concat(this.users);
-  //   this.users = [];
-  // }
-
-  // public moveAllLeft() {
-  //   this.users = this.users.concat(this.movedUsers);
-  //   this.movedUsers = [];
-  // }
-
   public moveAllItems(direction: 'right' | 'left'): void {
     if (direction === 'right') {
       this.movedUsers = this.movedUsers.concat(this.users);
@@ -78,31 +68,6 @@ export class ListsComponent {
       this.movedUsers = [];
     }
   }
-
-  // public moveRight() {
-
-  //   if (this.selectedUsers.length > 0) {
-  //     const uniqueSelectedUsers = new Set(this.selectedUsers);
-  //     this.movedUsers = this.movedUsers.filter(
-  //       (user) => !uniqueSelectedUsers.has(user)
-  //     );
-  //     this.movedUsers = this.movedUsers.concat([...uniqueSelectedUsers]);
-  //     this.users = this.users.filter((user) => !uniqueSelectedUsers.has(user));
-  //     this.selectedUsers = [];
-  //   }
-  // }
-
-  // public moveLeft() {
-  //   if (this.selectedUsers.length > 0) {
-  //     const uniqueSelectedUsers = new Set(this.selectedUsers);
-  //     this.users = this.users.filter((user) => !uniqueSelectedUsers.has(user));
-  //     this.users = this.users.concat([...uniqueSelectedUsers]);
-  //     this.movedUsers = this.movedUsers.filter(
-  //       (user) => !uniqueSelectedUsers.has(user)
-  //     );
-  //     this.selectedUsers = [];
-  //   }
-  // }
 
   public moveItems(direction: 'right' | 'left'): void {
     if (this.selectedUsers.length > 0) {
