@@ -30,10 +30,12 @@ export class ListComponent {
     this.selectedUsers = [];
   }
   editItem() {
-    this.users = this.users
-      .filter((user) => !this.selectedUsers.includes(user))
-      .concat([this.editedUser]);
-    this.selectedUsers = [];
+    if (this.editedUser.length > 0) {
+      this.users = [
+        ...this.users.filter((user) => !this.selectedUsers.includes(user)),
+        this.editedUser,
+      ];
+    }
     this.editedUser = '';
   }
 }

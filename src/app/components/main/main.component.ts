@@ -32,9 +32,11 @@ export class MainComponent {
     const backDropElement = document.querySelector('.backdrop');
     this.renderer.setStyle(backDropElement, 'display', 'block');
   }
-  public onSaveChanges(editedUser: string) {
+  public onSaveChanges() {
     this.firstList.editItem();
+    this.firstList.removeSelected();
     this.secondList.editItem();
+    this.secondList.removeSelected();
   }
 
   addRight() {
