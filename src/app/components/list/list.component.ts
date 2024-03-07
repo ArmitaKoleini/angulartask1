@@ -36,6 +36,5 @@ export class ListComponent {
         this.editedUser,
       ];
     }
-    this.editedUser = '';
   }
 }

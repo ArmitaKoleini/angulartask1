@@ -37,6 +37,7 @@ export class MainComponent {
     this.firstList.removeSelected();
     this.secondList.editItem();
     this.secondList.removeSelected();
+    this.editedUser = '';
   }
 
   addRight() {

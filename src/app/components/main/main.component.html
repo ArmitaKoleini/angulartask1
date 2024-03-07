@@ -18,6 +18,7 @@
                 (click)="onSaveChanges()"
                 (click)="closeModal()"
                 type="button"
+                [disabled]="editedUser == ''"
               >
                 <span>Save</span>
               </button>
@@ -47,7 +48,7 @@
     </div>
     <div class="second-list">
       <p class="paragraph">Second List</p>
-      <app-list #secondChild></app-list>
+      <app-list #secondChild ></app-list>
     </div>
   </div>
 </div>
